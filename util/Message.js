@@ -53,7 +53,7 @@ class Message {
     static get checkedAt() {
         let moment = require('moment-timezone');
         let currentTime = moment().tz("Asia/Ho_Chi_Minh").format('MMMM Do YYYY, h:mm:ss A');
-        let timezone = new Date().getTimezoneOffset();
+        let timezone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1];
 
         return ` Checked at ${currentTime} ${timezone}. `;
     }
