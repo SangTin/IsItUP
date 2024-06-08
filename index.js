@@ -15,10 +15,3 @@ var server = app.listen(process.env.PORT, "0.0.0.0", () => {
   const port = server.address().port;
   console.log('Web server started at http://%s:%s', host, port);
 });
-
-module.exports = (bot) => {
-  app.post('/' + bot.token, (req, res) => {
-    bot.processUpdate(req.body);
-    res.sendStatus(200);
-  });
-};
