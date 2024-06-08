@@ -146,3 +146,5 @@ if (trackFeature) {
         }
     });
 }
+
+module.exports = telegram;
