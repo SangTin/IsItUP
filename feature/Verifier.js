@@ -22,13 +22,19 @@ class Verifier {
 
         console.log(`Got: ${url}`);
 
-        request.get(url, res => {
+        const req = request.get(url, res => {
             console.log(`URL: ${url} || Status Code: ${res.statusCode}`);
-
             callback(msg, url, true, res.statusCode);
         }).on('error', e => {
-    //      is not responding
+            // is not responding
             console.log(`URL error: ${url}`);
+            callback(msg, url, false);
+        });
+
+        // Set timeout for the request
+        req.setTimeout(10000, () => { // 10 seconds
+            console.log(`URL timeout: ${url}`);
+            req.abort();
             callback(msg, url, false);
         });
     }
