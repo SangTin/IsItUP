@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+process.env.TZ = 'Asia/Ho_Chi_Minh';
+
 if (process.env.IS_IT_UP_TOKEN == undefined) {
     console.error("You have to set the environment variable IS_IT_UP_TOKEN with your telegram token.");
     process.exit(1);
